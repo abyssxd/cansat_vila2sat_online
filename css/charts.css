@@ -1,0 +1,165 @@
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    max-height: 100%;
+    overflow-y: hidden;
+}
+
+.title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.title a {
+    margin-bottom: -10px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 10px;
+    cursor: pointer;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.temp_show {
+    background-color: rgba(237, 125, 49, 1);
+}
+
+.pressure_show {
+    background-color: rgba(112, 173, 71, 1);
+}
+
+.altitude_show {
+    background-color: rgba(106, 90, 205, 1);
+}
+
+.velocity_show {
+    background-color: rgba(220, 20, 60, 1);
+}
+
+.temp_show:hover {
+    background-color: rgb(237, 111, 27);
+}
+
+.pressure_show:hover {
+    background-color: rgb(76, 135, 38);
+}
+
+.altitude_show:hover {
+    background-color: rgb(78, 58, 207);
+}
+
+.velocity_show:hover {
+    background-color: rgb(164, 15, 45);
+}
+
+hr {
+    margin-bottom: 20px;
+}
+
+.child:first-child {
+    position: relative;
+    right: -70px;
+}
+
+.child:last-child {
+    position: relative;
+    left: 60px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 10px 1.5%;
+    margin-left: 0;
+}
+
+.chartContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 65vw;
+}
+
+
+.chart {
+    width: 65vw;
+    height: auto;
+    background-color: #ffffff;
+    color: #333;
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.download {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.download a {
+    background-color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.temperature a {
+    color: rgba(237, 125, 49, 1);
+}
+
+.altitude a {
+    color: rgba(106, 90, 205, 1);
+}
+
+.pressure a {
+    color: rgba(112, 173, 71, 1);
+}
+
+.velocity a {
+    color: rgba(220, 20, 60, 1);
+}
+
+
+@media screen and (max-width: 768px) {
+    .chart {
+        width: 90vw;
+        margin: 10px auto;
+    }
+    .chartContainer {
+        justify-content: center;
+        width: 90vw;
+    }
+    h1 {
+        margin-left: 0;
+        text-align: center;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 20px;
+        align-content: space-around;
+        flex-direction: column;
+        align-items: baseline;
+    }
+    #map {
+        width: 100%;
+    }
+}

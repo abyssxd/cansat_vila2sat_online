@@ -1,0 +1,242 @@
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    max-height: 100vh;
+}
+
+.title {
+    display: flex;
+    min-height: 50px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: -15px;
+}
+
+hr {
+    width: -webkit-fill-available;
+}
+
+.error {
+    background-color: #e24a4a;
+    color: white;
+    text-align: center;
+    width: 90vw;
+    height: auto;
+    border-radius: 8px;
+    border: 2px #222 solid;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.errorContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.container {
+    margin: 10px 2.5%;
+    margin-left: 0;
+}
+
+.blockContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 2vh;
+
+}
+
+.blockTitle {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    margin: -10px;
+}
+
+.blockBody {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.automargin {
+    margin-top: auto;
+}
+
+
+.blockFooter {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+}
+
+
+.title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #222;
+}
+
+#map {
+    height: 700px;
+    width: 40%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    width:12vw;
+    height: 44vh;
+    background-color: #fff;
+    color: #222;
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.statusblock {
+
+background-color: #e24a4a;
+color: white;
+border-radius: 10px;
+width: 50%;
+margin-top: -10px;
+
+}
+
+.mainStatusblock{
+display: flex;
+justify-content: center;
+align-items: center;   
+background-color: #e24a4a;
+color: white;
+border-radius: 10px;
+width: 45%;
+height: 5vh;
+margin: 20px;
+}
+
+
+.specialBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80%;
+    height: 8vh;
+    background-color: #fff;
+    color: #222;
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+}
+
+.subSpecialBlock {
+
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+
+}
+
+.download {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.download a {
+    background-color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.temperature a {
+    color: rgba(237, 125, 49, 1);
+}
+
+.altitude a {
+    color: rgba(106, 90, 205, 1);
+}
+
+.pressure a {
+    color: rgba(112, 173, 71, 1);
+}
+
+.velocity a {
+    color: rgba(220, 20, 60, 1);
+}
+
+
+@media screen and (max-width: 768px) {
+    .chart {
+        width: 90%;
+        margin: 10px auto;
+    }
+    .chartContainer {
+        justify-content: center;
+        max-width: 100%;
+    }
+    h1 {
+        margin-left: 0;
+        text-align: center;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 20px;
+        flex-direction: column;
+        align-items: baseline;
+    }
+    #map {
+        width: 100%;
+    }
+    .block {
+        width: 100%;
+        height: auto;
+    }
+    .specialBlock{
+        height: 14vh;
+    }
+    .mainStatusblock{
+        width: 100%;
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 945px) {
+
+    .block {
+        width: 35vh;
+        height: auto;
+    }
+
+}
