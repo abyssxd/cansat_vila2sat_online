@@ -5,6 +5,7 @@
     <title>Vila2Sat Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/dataset.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -68,33 +69,89 @@
         <hr>
     </div>
         <div id="map"></div>
+        
+        <div id="table-selection">
+    <label for="table-selector">Select Data Set:</label>
+    <select id="table-selector">
+        <option value="">Select a data set</option>
+        <!-- Options will be added by JavaScript -->
+    </select>
+</div>
+        
     </div>
+    
+
+
     <script src="js/script.js"></script>
     <script>
-        $(document).ready(function () {
-            function fetchData() {
-                $.ajax({
-                    url: 'database/fetchData.php',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        // Update the data-container with the fetched data
-                        $('#data-container').html(JSON.stringify(data));
-                        
-                        // Call a function in your external script with the fetched data
-                        if (typeof onDataFetched === 'function') {
-                            onDataFetched(data);
+    $(document).ready(function () {
+        var selectedTable = 'sensor_data'; // default table
+    
+        // Function to fetch data
+        function fetchData(tableName) {
+            $.ajax({
+                url: 'database/fetchData.php',
+                type: 'GET',
+                data: { tableName: tableName },
+                dataType: 'json',
+                success: function (data) {
+                    console.log('Data received:', data);
+                    if (data.error) {
+                        console.error('Error fetching data:', data.error);
+                    } else {
+                        onDataFetched(data);
+                        if (data.tables && data.tables.length > 0) {
+                            updateTableDropdown(data.tables, tableName);
+                        } else {
+                            console.error('No tables available');
                         }
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Error fetching data:', error);
                     }
-                });
-            }
-
-            // Fetch data every 200 milliseconds
-            setInterval(fetchData, 100);
+                },
+                error: function (xhr, status, error) {
+                    console.error('AJAX error:', error);
+                }
+            });
+        }
+    
+        // Update dropdown and set selected table
+        function updateTableDropdown(tables, currentTable) {
+            const selector = $('#table-selector');
+            selector.empty();
+            // Always add the default table first with special labeling
+            selector.append(`<option value="sensor_data" ${'sensor_data' === currentTable ? 'selected' : ''}>Latest Data</option>`);
+            tables.forEach(table => {
+                if (table !== 'sensor_data') { // Avoid duplicating the default table entry
+                    const formattedName = formatTableName(table);
+                    selector.append(`<option value="${table}" ${table === currentTable ? 'selected' : ''}>${formattedName}</option>`);
+                }
+            });
+        }
+    
+        $('#table-selector').change(function () {
+            selectedTable = $(this).val();
+            fetchData(selectedTable);
         });
+    
+        // Initial fetch
+        fetchData(selectedTable);
+    
+        // Set interval to refresh data every 200ms
+        setInterval(function () {
+            fetchData(selectedTable);
+        }, 500);
+    
+        function formatTableName(tableName) {
+            if (tableName === 'sensor_data') {
+                return 'Latest Data'; // Special label for the default table
+            }
+            const epochTime = tableName.split('_').pop();
+            const date = new Date(parseInt(epochTime) * 1000);
+            return `${tableName} (${date.toLocaleDateString()} ${date.toLocaleTimeString()})`;
+        }
+    });
+
+
+
         
     if (window.innerWidth <= 768) {
         document.querySelector('.title').style.display = 'none';

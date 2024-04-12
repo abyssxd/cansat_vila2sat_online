@@ -7,13 +7,32 @@ let targetQuaternion = new THREE.Quaternion();
 
 const container = document.getElementById('cansatContainer');
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(20, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(50, container.offsetWidth / container.offsetHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(container.offsetWidth, container.offsetHeight);
 container.appendChild(renderer.domElement);
 
-// Move the camera further back and up
-camera.position.set(0, 0, 300);
+updateCanvasSize();
+
+function updateCanvasSize() {
+    if (window.innerWidth <= 768) {
+        camera.position.set(0, 0, 500);
+        const canvasWidth = window.innerWidth * 0.8; // 90vw
+        const canvasHeight = (window.innerWidth * 0.9 * 2); // 3:2 aspect ratio
+        renderer.setSize(canvasWidth, canvasHeight);
+    } else {
+        camera.position.set(0, 0, 300);
+        renderer.setSize(container.offsetWidth, container.offsetHeight);
+    }
+}
+
+window.addEventListener('resize', () => {
+    updateCanvasSize();
+    camera.aspect = container.offsetWidth / container.offsetHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.offsetWidth, container.offsetHeight);
+});
+
 
 // Look at the center of the scene
 camera.lookAt(new THREE.Vector3(0, 0, 0));

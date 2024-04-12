@@ -188,7 +188,8 @@ function onDataFetched(data) {
         }else{
             document.getElementById("bmpStatusText").style.backgroundColor = "#01e774";
             document.getElementById("bmpStatusText").innerHTML = "Online";
-            document.getElementById("bmpTemp").innerHTML = "Tempreature: " + bmp_temp + " º";
+            document.getElementById("bmpTemp").innerHTML = "Tempreature: " + latestTemperature + " º";
+            console.log("Tempreature: " + bmp_temp);
             document.getElementById("bmpPressure").innerHTML = "Pressure: " + bmp_pressure + " Pa";
             document.getElementById("bmpAltitude").innerHTML = "Altitude: " + bmp_altitude + " m";
         }
@@ -215,7 +216,6 @@ function onDataFetched(data) {
             document.getElementById("gyro_x").innerHTML = "Gyro X: " + gyro_x + " rad/s";
             document.getElementById("gyro_y").innerHTML = "Gyro Y: " + gyro_y+ " rad/s";
             document.getElementById("gyro_z").innerHTML = "Gyro Z: " + gyro_z+ " rad/s";
-            document.getElementById("gyro_temp").innerHTML = "Tempreature: " + gyro_temp+ " º";
         }
         
         if (apc_status != 1){
