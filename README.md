@@ -1,5 +1,5 @@
 # cansat_vila2sat_online
-A online hosted verison of the Vila2Sat Dashboard that uses mysql database instead of nodejs.
+A online hosted verison of the [Vila2Sat Dashboard](https://github.com/abyssxd/cansat_vila2sat) that uses mysql database instead of nodejs.
 
 Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
